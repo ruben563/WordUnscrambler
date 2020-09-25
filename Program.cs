@@ -129,11 +129,11 @@ namespace WordUnscrambler
             if (matchedWords.Any())
             {
                 //loop through matchedWords and print to console the contents of the structs
-                /*for (int i = 0; i < wordList.Length; i++)
+                for (int i = 0; i < wordList.Length; i++)
                 {
                     Console.WriteLine(wordList[i]);
                 }
-                */
+                
 
 
                 //foreach

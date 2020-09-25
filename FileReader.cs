@@ -14,7 +14,7 @@ namespace WordUnscrambler
         {
 
             //declare s string [] to hold the content of the file
-            string[] wordFile = File.ReadAllLines("scrambledWords.txt");
+            string[] wordFile = File.ReadAllLines("scrambledWords.txtx");
 
             //try/catch
             try
@@ -22,14 +22,14 @@ namespace WordUnscrambler
             //read from the file - ReadAllLines()
                 foreach (string word in wordFile)
                 {
-                    
+                    Console.WriteLine(word);
                 }
 
 
             }
             catch(Exception ex)
             {
-                Console.WriteLine("This is the error" + ex);
+                Console.WriteLine(ex);
             }
 
             //return file contents, which is a string
