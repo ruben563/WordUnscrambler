@@ -13,7 +13,7 @@ namespace WordUnscrambler
         private static readonly FileReader _fileReader = new FileReader();
         private static readonly WordMatcher _wordMatcher = new WordMatcher();
         private static readonly string[] scrambledWords;
-
+        
         static void Main(string[] args)
         {
 
@@ -91,13 +91,6 @@ namespace WordUnscrambler
 
             DisplayMatchedUnscrambledWords(manualWordArray);
         }
-
-
-
-
-
-
-
 
         //for the text file.
 

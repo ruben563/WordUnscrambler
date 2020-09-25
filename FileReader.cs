@@ -15,16 +15,17 @@ namespace WordUnscrambler
 
             //declare s string [] to hold the content of the file
 
-
+             string[] list = File.ReadAllLines(filename);
             
             //try/catch
             try
             {
-                string[] list;
                 //read from the file - ReadAllLines()
-
-                list = File.ReadAllLines(filename);
-                return list;
+                
+                foreach(string word in list)
+                {
+                    return list;
+                }
 
             }
             catch(Exception ex)
@@ -34,7 +35,7 @@ namespace WordUnscrambler
 
             //return file contents, which is a string
 
-            return 
+            return list; 
 
             
         }
