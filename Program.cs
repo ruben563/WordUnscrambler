@@ -133,19 +133,16 @@ namespace WordUnscrambler
                 {
                     Console.WriteLine(wordList[i]);
                 }
-                
-
-
                 //foreach
                 foreach (var matchedWord in matchedWords)
                 {
-                    
+                    matchedWords.Add(matchedWord);
 
                     //matched found for act: cat
 
                 }
 
-                //Console.WriteLine(matchedWord);
+                Console.WriteLine(matchedWords);
                 //write to console
 
                 //matched found for act: cat
@@ -156,13 +153,5 @@ namespace WordUnscrambler
                 Console.WriteLine();
             }
         }
-
-
-       
-
-
-
-
-
-}
+    }
 }

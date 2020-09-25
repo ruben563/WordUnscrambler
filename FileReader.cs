@@ -14,7 +14,7 @@ namespace WordUnscrambler
         {
 
             //declare s string [] to hold the content of the file
-            string[] wordFile = File.ReadAllLines("scrambledWords.txtx");
+            string[] wordFile = File.ReadAllLines("scrambledWords.txt");
 
             //try/catch
             try
