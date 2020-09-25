@@ -23,13 +23,13 @@ namespace WordUnscrambler
             {
                 try
                 {
-                    bool temp;
+                    bool temp = false;
 
-                    while (true)
+                    while (!temp)
                     {
-
+                        
                         cont.Input();
-                        String option = Console.ReadLine() ?? throw new Exception("String is empty/null");
+                        String option = Console.ReadLine();
 
 
                         switch (option.ToUpper())
@@ -37,20 +37,22 @@ namespace WordUnscrambler
                             case "F":
                                 cont.File();
                                 ExecuteScrambledWordInFileScenario();
+                                temp = true;
                                 break;
 
                             case "M":
                                 cont.Mannual();
                                 ExecuteScrambledWordsManualEntryScenario();
-                                break;
-
-                            default:
                                 temp = true;
                                 break;
 
+                            default:
+                                temp = false;
+                                break;
                         }
                     }
                 }
+
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
@@ -59,8 +61,8 @@ namespace WordUnscrambler
                 cont.Again();
                 string rest = Console.ReadLine();
                 restart = rest.ToUpper();
-            }
-            while (restart == "Y"); 
+                }
+                while (restart == "Y"); 
 
 
         }
@@ -130,19 +132,19 @@ namespace WordUnscrambler
             if (matchedWords.Any())
             {
                 //loop through matchedWords and print to console the contents of the structs
-                for (int i = 0; i < wordList.Length; i++)
+                for (int i = 0; i < matchedWords.Count; i++)
                 {
-                    Console.WriteLine(wordList[i]);
-                }
                 //foreach
                 foreach (var matchedWord in matchedWords)
                 {
 
-                    Console.WriteLine(matchedWord.ScrambledWord, matchedWord.Word);
+                    Console.WriteLine("MATCH FOUND FOR {0} : {1} ", matchedWord.ScrambledWord,matchedWord.Word);
+                    //matched found for act: cat
                     //matched found for act: cat
 
                 }
-
+    
+                }
                
                 //write to console
 

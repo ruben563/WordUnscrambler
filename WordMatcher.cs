@@ -30,7 +30,7 @@ namespace WordUnscrambler
                     else
                     {
                         //convert strings into chraters arrays
-                        char[] scrambledWordArray = scrambledWord.ToCharArray();
+                        char[] scrambledWordArray = word.ToCharArray();
 
 
                         //sort both charater arrays(Array.sort())

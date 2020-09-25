@@ -13,6 +13,7 @@ namespace WordUnscrambler
 
             Console.WriteLine("Enter the scrambled word(s) manually or as file: F - file / M - manual: ");
             
+            
         }
 
         public void File()
