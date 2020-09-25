@@ -11,41 +11,55 @@ namespace WordUnscrambler
 
         private static readonly FileReader _fileReader = new FileReader();
         private static readonly WordMatcher _wordMatcher = new WordMatcher();
+        private static readonly string[] scrambledWords;
 
         static void Main(string[] args)
         {
 
-            
-
-            try
+            string restart;
+            do
             {
-                Console.WriteLine("enter scrambled word(s) manually or as a file: F - file /M - manual");
-                String option = Console.ReadLine() ?? throw new Exception("String is empty/null");
-
-                switch (option.ToUpper())
+                try
                 {
-                    case  "F":
-                        Console.WriteLine("Enter the path to the file");
-                        ExecuteScrambledWordInFileScenario();
-                        break;
+                    char[] letters = {'m','f'};
+                    
+                    while (letters == letters){
 
-                    case "M":
-                        Console.WriteLine("Enter the words mannually ( seperated by commas if multiple )");
-                        ExecuteScrambledWordsManualEntryScenario();
-                        break;
 
-                    default:
-                        Console.WriteLine("The entered option is not recognized");
-                        break;
+                    Console.WriteLine("enter scrambled word(s) manually or as a file: F - file /M - manual");    
+                    string option = Console.ReadLine() ?? throw new Exception("String is empty/null");
+
+                        switch (option.ToUpper())
+                        {
+                            case "F":
+                                Console.WriteLine("Enter the full path including the file name: ");
+                                ExecuteScrambledWordInFileScenario();
+                                break;
+
+                            case "M":
+                                Console.WriteLine("Enter the words mannually ( seperated by commas if multiple )");
+                                ExecuteScrambledWordsManualEntryScenario();
+                                break;
+
+                            default:
+                                break;
+
+                        }
+                    }
+                
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
                 }
 
 
+                    Console.WriteLine("Would you like to continue? Y/N");
+                    string rest = Console.ReadLine();
+                    restart = rest.ToUpper();
 
             }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            while (restart == "Y");
 
 
         }
@@ -64,15 +78,15 @@ namespace WordUnscrambler
 
             //extract the words into a string[] - use Split()
             //char[] separators = { ',', ' ' };
-            char[] commas = { ',', ' ' };
+            char[] commas = { ',',' '};
 
             //string[] scrambledWords = manualInput.Split();
             string[] manualWordArray = manualWord.Split(commas);
 
+
             //display matched words
 
-
-            //DisplayMatchedUnscrambledWords(scrambledWords);
+            DisplayMatchedUnscrambledWords(scrambledWords);
         }
 
 
@@ -106,21 +120,24 @@ namespace WordUnscrambler
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)
         {
             //read the list of words in the wordlist.txt file (unscrambled words)
-            string[] wordist = _fileReader.Read("wordlist.txt");
+            string[] wordList = _fileReader.Read("wordlist.txt");
 
             //call a word matcher method, to get a list of MatchedWord structs
-            List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordist);
+            List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordList);
 
             //display the match - print to console
             if (matchedWords.Any())
             {
                 //loop through matchedWords and print to console the contents of the structs
-                for(int i=0; i<wordist.Length; i++)
+                /*for (int i = 0; i < wordList.Length; i++)
                 {
-                    Console.WriteLine(wordist[i]);
+                    Console.WriteLine(wordList[i]);
                 }
+                */
+
+
                 //foreach
-                foreach(var matchedWord in matchedWords)
+                foreach (var matchedWord in matchedWords)
                 {
                     
 
@@ -128,6 +145,7 @@ namespace WordUnscrambler
 
                 }
 
+                //Console.WriteLine(matchedWord);
                 //write to console
 
                 //matched found for act: cat
@@ -135,9 +153,16 @@ namespace WordUnscrambler
             else
             {
                 //no matches have been found
-                Console.WriteLine("No words were the same");
+                Console.WriteLine();
             }
-            
         }
-    }
+
+
+       
+
+
+
+
+
+}
 }

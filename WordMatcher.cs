@@ -14,7 +14,7 @@ namespace WordUnscrambler
         public List<MatchedWord> Match(string[] scrambledWords, string [] wordList)
         {
             List<MatchedWord> matchedWords = new List<MatchedWord>();
-
+            
             foreach (var scrambledWord in scrambledWords)
             {
 
@@ -35,10 +35,7 @@ namespace WordUnscrambler
 
                         //sort both charater arrays(Array.sort())
                         Array.Sort(scrambledWordArray);
-                        for(int i =0; i < scrambledWord.Length; i++)
-                        {
-                            Console.WriteLine(scrambledWord[i]);
-                        }
+                        
                         
                         //convert character arrays back to strings
                         string scrambledString = new string(scrambledWordArray);
@@ -46,6 +43,9 @@ namespace WordUnscrambler
 
                         //compare the two strings
                         //if they are equal, add to matchedWord list
+
+
+
                         if (scrambledWord.Equals(scrambledString, StringComparison.OrdinalIgnoreCase)){
                             matchedWords.Add(BuildMatchedWord(scrambledWord, scrambledString));
                         }
@@ -53,6 +53,7 @@ namespace WordUnscrambler
                         {
                             Console.WriteLine();
                         }
+                        
                     }
                     //end of if
 
