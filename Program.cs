@@ -118,7 +118,7 @@ namespace WordUnscrambler
 
 
 
-        //RUBEN TU DOIS ARRANGER ICI PETIT COM RAPELLE TOI
+        
 
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)
         {
