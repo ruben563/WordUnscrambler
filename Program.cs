@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace WordUnscrambler
 {
     class Program
     {
-
+        
         private static readonly FileReader _fileReader = new FileReader();
         private static readonly WordMatcher _wordMatcher = new WordMatcher();
         private static readonly string[] scrambledWords;
@@ -16,50 +17,50 @@ namespace WordUnscrambler
         static void Main(string[] args)
         {
 
+            Constants cont = new Constants();
             string restart;
             do
             {
                 try
                 {
-                    char[] letters = {'m','f'};
-                    
-                    while (letters == letters){
+                    bool temp;
 
+                    while (true)
+                    {
 
-                    Console.WriteLine("enter scrambled word(s) manually or as a file: F - file /M - manual");    
-                    string option = Console.ReadLine() ?? throw new Exception("String is empty/null");
+                        cont.Input();
+                        String option = Console.ReadLine() ?? throw new Exception("String is empty/null");
+
 
                         switch (option.ToUpper())
                         {
                             case "F":
-                                Console.WriteLine("Enter the full path including the file name: ");
+                                cont.File();
                                 ExecuteScrambledWordInFileScenario();
                                 break;
 
                             case "M":
-                                Console.WriteLine("Enter the words mannually ( seperated by commas if multiple )");
+                                cont.Mannual();
                                 ExecuteScrambledWordsManualEntryScenario();
                                 break;
 
                             default:
+                                temp = true;
                                 break;
 
                         }
                     }
-                
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
                 }
 
-
-                    Console.WriteLine("Would you like to continue? Y/N");
-                    string rest = Console.ReadLine();
-                    restart = rest.ToUpper();
-
+                cont.Again();
+                string rest = Console.ReadLine();
+                restart = rest.ToUpper();
             }
-            while (restart == "Y");
+            while (restart == "Y"); 
 
 
         }
@@ -86,7 +87,7 @@ namespace WordUnscrambler
 
             //display matched words
 
-            DisplayMatchedUnscrambledWords(scrambledWords);
+            DisplayMatchedUnscrambledWords(manualWordArray);
         }
 
 
@@ -115,7 +116,7 @@ namespace WordUnscrambler
 
 
 
-
+        //RUBEN TU DOIS ARRANGER ICI PETIT COM RAPELLE TOI
 
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)
         {
@@ -136,13 +137,13 @@ namespace WordUnscrambler
                 //foreach
                 foreach (var matchedWord in matchedWords)
                 {
-                    matchedWords.Add(matchedWord);
 
+                    Console.WriteLine(matchedWord.ScrambledWord, matchedWord.Word);
                     //matched found for act: cat
 
                 }
 
-                Console.WriteLine(matchedWords);
+               
                 //write to console
 
                 //matched found for act: cat
@@ -152,6 +153,27 @@ namespace WordUnscrambler
                 //no matches have been found
                 Console.WriteLine();
             }
+
+
+
+            MatchedWord BuildMatchedWord(string scrambledWord, string word)
+            {
+
+                MatchedWord matchedWord = new MatchedWord
+                {
+                    ScrambledWord = scrambledWord,
+                    Word = word
+                };
+                return matchedWord;
+            }
+
+            
+
         }
+
+
     }
-}
+
+
+    }
+

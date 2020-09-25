@@ -48,11 +48,9 @@ namespace WordUnscrambler
 
                         if (scrambledWord.Equals(scrambledString, StringComparison.OrdinalIgnoreCase)){
                             matchedWords.Add(BuildMatchedWord(scrambledWord, scrambledString));
+                            
                         }
-                        else
-                        {
-                            Console.WriteLine();
-                        }
+                        
                         
                     }
                     //end of if
