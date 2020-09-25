@@ -14,7 +14,7 @@ namespace WordUnscrambler
         {
 
             //declare s string [] to hold the content of the file
-            string[] wordFile = File.ReadAllLines(@"C:\Users\jrube\source\repos\WordUnscrambler\wordlist.txt");
+            string[] wordFile = File.ReadAllLines("wordlist.txt");
 
             //try/catch
             try
