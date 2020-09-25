@@ -14,17 +14,27 @@ namespace WordUnscrambler
         {
 
             //declare s string [] to hold the content of the file
-            string [] wordFile = 
+            string[] wordFile = File.ReadAllLines(@"C:\Users\jrube\source\repos\WordUnscrambler\wordlist.txt");
 
             //try/catch
-
-
+            try
+            {
             //read from the file - ReadAllLines()
+                foreach (string word in wordFile)
+                {
+                    Console.WriteLine(word);
+                }
 
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
             //return file contents, which is a string
-            
-            Console.ReadLine();
+
+            return wordFile;
 
             
         }

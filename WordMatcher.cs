@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WordUnscrambler
@@ -23,6 +24,7 @@ namespace WordUnscrambler
                     //scrambledWord already matched word
                     if(scrambledWord.Equals(word, StringComparison.OrdinalIgnoreCase))
                     {
+                        
                         matchedWords.Add(BuildMatchedWord(scrambledWord, word));
                     }
                     else
@@ -40,14 +42,16 @@ namespace WordUnscrambler
                         
                         //convert character arrays back to strings
                         string scrambledString = new string(scrambledWordArray);
+
+
                         //compare the two strings
                         //if they are equal, add to matchedWord list
-                        if (scrambledWord.Equals(scrambledString, StringComparison.OrdinalIgnoreCase){
+                        if (scrambledWord.Equals(scrambledString, StringComparison.OrdinalIgnoreCase)){
                             matchedWords.Add(BuildMatchedWord(scrambledWord, scrambledString));
                         }
                         else
                         {
-                            Console.WriteLine("no word");
+                            Console.WriteLine();
                         }
                     }
                     //end of if

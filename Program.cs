@@ -60,16 +60,17 @@ namespace WordUnscrambler
         {
             // get user's input - a comma seperated string containing scrambled words
             string manualWord = Console.ReadLine();
-            
-            
-            //extract the words into a string[] - use Split()
-            manua
 
+
+            //extract the words into a string[] - use Split()
             //char[] separators = { ',', ' ' };
+            char[] commas = { ',', ' ' };
 
             //string[] scrambledWords = manualInput.Split();
+            string[] manualWordArray = manualWord.Split(commas);
 
             //display matched words
+
 
             //DisplayMatchedUnscrambledWords(scrambledWords);
         }
@@ -121,7 +122,7 @@ namespace WordUnscrambler
                 //foreach
                 foreach(var matchedWord in matchedWords)
                 {
-                    //write to console
+                    
 
                     //matched found for act: cat
 
